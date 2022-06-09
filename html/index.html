@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <link rel="stylesheet" href="../css/questoes.css">
+    <link rel="stylesheet" href="../css/backgound.css">
+
+    <style>
+        iframe{
+            border-radius: 20px;
+        }
+    </style>    
+
+</head>
+<body class="gradientAnimated">  
+
+    <header>
+        <a class="button" href="#">
+            <img src="../icons/arrowback_111142.png" alt="">
+        </a>
+
+        <h2 id="questNumber">Bee Game -  Eduardo Fernandes</h2>
+
+    </header>
+    <main>
+        <div class="game">  <!-- substitutuir pelo iframe do game-->
+
+            <iframe src="beeGame.html" frameborder="0" width="550px" height="550px" scrolling="no" overflow="hidden" class="beeGameIframe" id="bGame" name="beeGameIframe"></iframe>
+
+        </div>
+            
+        
+
+        <div class='help'>
+            <div class="circle"></div>
+            <ion-icon class="helpIcon" name="help"></ion-icon>
+            <h2>Ajuda</h2>
+            <p class="questHelp"> 
+                Ajude a abelha a coletar o pólen de todas as flores, use as teclas direcionais &larr;, &uarr;, &rarr; e &darr; para mover a abelha, e depois escreva o número de flores que você visitou no quadro à direita.</p>
+        </div>
+
+        <div id="quadro">
+            <h2 id="artificio">Quadro</h2>
+                <div>
+            <span style="display : inline-block">
+            Tamanho da Caneta <br> <span id="lineWidth">7</span><input type="range" id="penSize" min="1" max="30" value="7">
+            <br>
+            <canvas id="canvas" width="400" height="400" style="border: 2px solid; cursor: crosshair;"></canvas>
+            <br>
+            <form>
+                Idioma:
+                <select id="language">
+                <option value="pt-BR">Português-Br</option>
+                <option value="en">English</option>
+            
+                </select>
+            </form>
+            <div>
+                <button class="btn" onclick="canvas.erase()
+                                clean();">Limpar</button>
+                <button class="btn"  onclick="
+                    var e = document.getElementById('language');
+                    canvas.setOptions({language: e.options[e.selectedIndex].value,
+                    numOfReturn : 1});
+                    canvas.recognize();
+                ">Responder</button>
+                <button class="btn"  onclick="canvas.undo()">Desfazer</button>
+                <button class="btn"  onclick="canvas.redo()">Refazer</button>
+            </div>
+            Resultado: <span id="result"></span>
+            </span>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <script type="text/javascript" src="../script/handwriting.canvas.js"></script>
+
+    <script type="text/javascript" defer="">
+        var canvas = new handwriting.Canvas(document.getElementById('canvas'), 7);
+        var width = document.getElementById("artificio").clientWidth
+        canvas.cxt.canvas.width  = width < 400 ? width : 400;
+        canvas.cxt.canvas.height = width < 400 ? width : 400;
+        canvas.setCallBack(function(data, err) {
+            if (err) throw err;
+            else document.getElementById("result").innerHTML = data;
+            resposta();
+        });
+        canvas.set_Undo_Redo(true, true);
+        var penSize = document.getElementById("penSize");
+        penSize.addEventListener("mousemove", function() {
+            document.getElementById("lineWidth").innerHTML = penSize.value;
+        });
+        penSize.addEventListener("change", function(){
+            canvas.setLineWidth(penSize.value);
+        });
+
+        function clean(){
+            var res = document.getElementById('result')
+            res.innerHTML = ""
+        }
+    </script>
+
+    <script src="../script/exercicio-grafica-quantidade.js"></script>
+    
+</body>
+</html>

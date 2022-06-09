@@ -1,0 +1,189 @@
+@charset "UTF-8";
+@font-face {
+    font-family: burbank;
+    src: url('../fonts/Burbank Big Condensed Black.ttf') format('truetype');
+    font-weight: normal;
+    font-size: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: burbank,Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+header{
+    position: relative;
+    display: flex;
+}
+header > a img{
+    position: relative;
+    height: 60px;
+    width: 60px;
+    padding: 10px;
+    margin: 30px;
+    background: rgba(255,255,255,0.1);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: .5s;
+    border-radius: 20px;
+    overflow: hidden;
+    border-top-left-radius: 1px solid rgba(255,255,255,0.5);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#questNumber{
+    position: relative;
+    margin-top: 50px;
+    left: 30vw;
+    font-size: 40px;
+    z-index: 900;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 0px;
+}
+
+.game{
+    position: relative;
+    width: 550px;
+    height: 550px;
+    /*border: 2px solid black;*/
+    margin: 10px;
+    border-radius: 20px;
+}
+.help{
+    position: relative;
+    width: 300px;
+    padding: 10px;
+    height: 550px;
+    margin: 10px;
+    display: flex;
+    background: rgba(255,255,255,0.1);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: cell;
+    transition: .5s;
+    border-radius: 20px;
+    overflow: hidden;
+    border-top-left-radius: 1px solid rgba(255,255,255,0.5);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.circle{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    top: 5%;
+    left: 8%;
+    transition: .5s;
+    z-index: -1;
+
+}
+
+.help > h2 {
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    
+    
+    transform: translateY(500px);
+    transition: .5s;
+}
+
+.help > p{
+    position: relative;
+    text-align: center;
+    transform: translateY(500px);
+    transition: .5s;
+}
+
+.helpIcon{
+    position: relative;
+    font-size: 240px;
+    top: 50px;
+    color: white;
+    transition: .5s;
+
+}
+
+.help:hover .helpIcon{
+    color: black;
+    font-size: 80px;
+    transform: translate(100px, -160px);
+    transform-origin: top;
+    transition: .5s;
+}
+
+.help:hover .circle{
+    transform: scale(100);
+    transition: .5s;
+}
+
+.help:hover > h2{
+    transform: translateY(-100px);
+    transition: .5s;
+}
+.help:hover > p{
+    transform: translateY(-90px);
+    transition: .5s;
+}
+
+#quadro{
+    font-size: 20px;
+    position: relative;
+    width: 350px;
+    height: 550px;
+    margin: 10px;
+    padding: 10px;
+    transition: .5s;
+    border-radius: 20px;
+    overflow: hidden;
+    border-top-left-radius: 2px solid rgba(255,255,255,0.5);
+    border-left: 2px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 3px black;
+
+
+}
+
+#quadro > h2{
+    text-align: center;
+    font-size: 28px;
+    margin: 2px;
+}
+
+.btn{
+    position: relative;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: white;
+    margin: 10px 2px 10px 2px;
+}
+
+canvas{
+    border-radius: 10px;
+    background: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}

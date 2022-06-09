@@ -1,0 +1,100 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --pri1 : rgb(234,143, 20);
+    --pri2 : rgb(255,194,112);
+    --pri3 : rgb(244,169, 70);
+    --pri4 : rgb(183,108,  8);
+    --pri5 : rgb(144, 82,  0);
+
+    --sec1 : rgb(234,169, 20);
+    --sec2 : rgb(255,211,112);
+    --sec3 : rgb(244,191, 70);
+    --sec4 : rgb(183,130,  8);
+    --sec5 : rgb(144,100,  0);
+
+    --tec1 : rgb(234,107, 20);
+    --tec2 : rgb(255,170,112);
+    --tec3 : rgb(244,140, 70);
+    --tec4 : rgb(183, 79,  8);
+    --tec5 : rgb(144, 58,  0);
+}
+
+.gradientAnimated{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(45deg,rgb(107, 107, 218), lightblue);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease infinite;
+}
+
+.gradientAnimated::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(17, 17, 248),rgb(52, 52, 255));
+    clip-path: circle(40% at right 70%);
+    animation:  moves2 5s ease infinite;
+}
+
+.gradientAnimated::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(lightblue, white);
+    clip-path: circle(30% at 10% 10%);
+    animation:  moves1 5s ease infinite;
+
+
+}
+
+@keyframes change{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+/*@keyframes moves1{
+    0%{
+        clip-path: circle(30% at 10% 10%);
+    }
+    50%{
+        clip-path: circle(29% at 10% 10%);
+    }
+    100%{
+        clip-path: circle(30% at 10% 10%);
+    }
+}
+@keyframes moves2{
+    0%{
+        clip-path: circle(38% at right 70%);
+    }
+    50%{
+        clip-path: circle(40% at right 70%);
+    }
+    100%{
+        clip-path: circle(38% at right 70%);
+    }
+}*/
+
+main{
+    z-index: 1;
+}

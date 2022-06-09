@@ -1,0 +1,360 @@
+
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: burbank;
+}
+
+@font-face {
+    font-family: burbank;
+    src: url('../fonts/Burbank Big Condensed Black.ttf') format('truetype');
+    font-weight: normal;
+    font-size: normal;
+}
+
+.gameBackground{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 550px;
+    height: 550px;
+    padding: 0;
+    background-image: linear-gradient(0deg,rgb(132, 132, 188),rgb(85, 85, 181));
+    text-align: center;
+    font-size: 40px;
+    overflow: hidden;
+}
+
+.texto{
+    display: flex;
+    position: absolute;
+    z-index: 100;
+    width: 400px;
+    height: 400px;
+    align-items: center;
+    background: rgb(244, 169, 70);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.459);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    transition: 0.5;
+    overflow: hidden;
+    animation: textEnter 2s ;
+}
+
+p{
+    position: relative;
+    display: block;
+    text-align: center;
+    z-index: 101;
+    margin-left: auto;
+    margin-right: auto;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.resGametxt{
+    transform: scale(1);
+}
+
+
+
+@keyframes textEnter {
+    0%{
+        transform: scale(0);
+    }
+    90%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.terreno{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    animation: enterTerrain 2s linear;
+}
+
+@keyframes enterTerrain {
+    0%{
+        bottom: -100px;
+    }
+    100%{
+        bottom: 0px;
+    }
+}
+
+
+.terreno > .custom-shape-divider-bottom-1654460264 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.terreno > .custom-shape-divider-bottom-1654460264 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 58px;
+}
+
+.terreno > .custom-shape-divider-bottom-1654460264 .shape-fill {
+    fill: rgb(37, 155, 47);
+}
+
+
+#abelha{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    border-radius: 15px;
+    z-index: 90;
+    transition: 0.2s;
+    animation: moving 3s linear infinite;
+}
+.bee{
+    background-image: linear-gradient(180deg,rgb(225, 225, 68), rgb(82, 45, 45));
+}
+
+.bee::after{
+    content: " ";
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: black;
+    left: 12px;
+}
+
+.bee::before{
+    content: " ";
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: black;
+    left: 24px;
+    z-index: 2;
+}
+
+
+@keyframes moving {
+    0%{
+        transform: translateY(4%);
+    }
+    50%{
+        transform: translateY(-4%);
+    }
+    100%{
+        transform: translateY(4%);
+    }
+}
+
+
+
+.flower{
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background-image: radial-gradient( rgba(252, 16, 16, 0.712) 1%,pink );
+    border-radius: 51% 49% 48% 52% / 34% 36% 64% 66%;
+    z-index: 3;
+    animation:  moving 3s linear infinite,
+                flowerEnter  linear 3s;
+}
+
+.flower.nVisited::before{
+    display: block;
+    content:'';
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    background: #ffff00b2;
+    transform: translate(10px, -15px);
+    border-radius: 45px 45px 0 0;
+    box-shadow: 0 0 10px yellow;
+    animation: animateFlower 5s linear infinite;
+    z-index: 2;
+    transition: .5s;
+}
+
+.flower::after{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 550px;
+    background: greenyellow;
+    transform: translate(27px,40px);
+    z-index: 1;
+}
+@keyframes animateFlower {
+    0%{
+        transform: translate(10px,-13px) scale(1);
+        box-shadow: 0 0 10px rgb(255, 255, 0),
+                    0 0 20px rgb(255, 255, 0),
+                    0 0 30px rgb(255, 255, 0);
+    }
+    50%{
+        transform: translate(10px,-15px) scale( 0.8);
+        box-shadow: 0 0 5px rgb(224, 224, 86),
+                    0 0 10px rgb(224, 224, 86),
+                    0 0 15px rgb(224, 224, 86);
+    }
+    100%{
+        transform: translate(10px,-13px) scale(1);
+        box-shadow: 0 0 10px rgb(255, 255, 0),
+                    0 0 20px rgb(224, 224, 86),
+                    0 0 30px rgb(224, 224, 86) ;
+    }
+}
+
+@keyframes flowerEnter{
+    0%{
+        transform: translateY(900%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+
+.gamePlay{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-top : 70px solid transparent;
+    border-left: 110px solid  rgb(244,169, 70);
+    border-bottom: 70px solid transparent;
+    transition: .5s;
+}
+.gamePlay:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.493));
+    transition: .5s;
+}
+
+.gameScore{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background-image: radial-gradient(yellow,rgb(255, 138, 5));
+    border-radius: 50%;
+    top: -40px;
+    left: 400px;
+    display: flex;
+    box-shadow: 0 0 10px rgb(255, 138, 5),
+                0 0 20px rgb(255, 138, 5),
+                0 0 40px rgb(255, 138, 5);
+    animation: sunEnter 3s;
+}
+
+@keyframes sunEnter{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+
+.point{
+    position: relative;
+    width: 6px;
+    height: 40px;
+    background:white;
+    z-index: 90;
+    top:60px;
+    right: -10px;
+    border-radius: 3px;
+    margin: 3px;
+    transition: 0.5s;
+}
+
+
+.cloud{
+    position: absolute;
+    width: 550px;
+    height: 200px;
+    background: transparent;
+    top: 70px;
+    left: 500px;
+    animation: clouds 20s infinite linear;
+}
+
+.cloud > .cloud1{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: 130px
+}
+
+.cloud > .cloud2{
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: 60px;
+    left: 150px;
+}
+
+.cloud > .cloud2 > .sCloud1{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: -40px;
+    left: 40px;
+}
+
+.cloud > .cloud2 > .sCloud2{
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: 40px;
+    left: 60px;
+}
+
+.cloud > .cloud3{
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: 60px;
+    left: 380px;
+}
+.cloud > .cloud3 > .sCloud1{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    top: 40px;
+    left: 60px;
+}
+
+@keyframes clouds{
+    0%{
+        left: 550px;
+    }
+    100%{
+        left: -550px;
+    }
+}
